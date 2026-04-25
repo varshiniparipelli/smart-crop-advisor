@@ -418,7 +418,7 @@ with tab_predict:
             ))
             gauge.update_layout(height=190, margin=dict(t=40,b=0,l=20,r=20),
                                 paper_bgcolor="rgba(0,0,0,0)")
-            st.plotly_chart(gauge, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
             # ── Top-5 bar ────────────────────────────────────
             classes  = model.classes_
@@ -437,7 +437,7 @@ with tab_predict:
                                   xaxis_title="Confidence %",
                                   yaxis={"autorange":"reversed"},
                                   paper_bgcolor="rgba(0,0,0,0)")
-            st.plotly_chart(fig_bar, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
             # ── Param scores ─────────────────────────────────
             p_keys = ["N","P","K","temperature","humidity","ph","rainfall"]
@@ -453,7 +453,7 @@ with tab_predict:
             fig_p.update_layout(yaxis=dict(range=[0,115],title="Match %"),
                                 height=240,margin=dict(t=10,b=10,l=5,r=5),
                                 paper_bgcolor="rgba(0,0,0,0)")
-            st.plotly_chart(fig_p, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
             # save history
             save_history({
@@ -585,7 +585,7 @@ with tab_soil:
                              yaxis={"autorange":"reversed"},
                              paper_bgcolor="rgba(0,0,0,0)",
                              showlegend=False)
-        st.plotly_chart(fig_om, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # ── Soil texture triangle (simplified) ────────────────────
     st.markdown('<div class="section-head">🔺 Soil Texture Comparison</div>',
@@ -610,7 +610,7 @@ with tab_soil:
     fig_tx.update_layout(polar=dict(radialaxis=dict(visible=True,range=[0,6])),
                          height=420, paper_bgcolor="rgba(0,0,0,0)",
                          margin=dict(t=20,b=20,l=20,r=20))
-    st.plotly_chart(fig_tx, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 # ════════════════════════════════════════════════════════════════════════════
 # TAB 3 — PEST & DISEASE RISK INDEX
@@ -651,7 +651,7 @@ with tab_pest:
         ))
         fig_risk.update_layout(height=260, margin=dict(t=40,b=0,l=20,r=20),
                                paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_risk, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with pc2:
         st.markdown('<div class="section-head">🦠 Known Threats</div>',
@@ -717,7 +717,7 @@ with tab_pest:
                                xaxis=dict(title="Risk Index (0–100)", range=[0,115]),
                                yaxis={"autorange":"reversed"},
                                paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(fig_all_risk, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 # ════════════════════════════════════════════════════════════════════════════
 # TAB 4 — WATER REQUIREMENT vs AVAILABILITY
@@ -799,7 +799,7 @@ with tab_water:
         ))
         fig_w.update_layout(height=250, margin=dict(t=40,b=0,l=20,r=20),
                             paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_w, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         # Source comparison bar
         st.markdown('<div class="section-head">🔄 Water Source Comparison</div>',
@@ -818,7 +818,7 @@ with tab_water:
                               yaxis_title="mm / season",
                               paper_bgcolor="rgba(0,0,0,0)",
                               legend=dict(orientation="h",y=-0.2))
-        st.plotly_chart(fig_src, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # ── Water need ranking all crops ──────────────────────────
     st.markdown('<div class="section-head">💧 Water Requirement — All Crops</div>',
@@ -844,7 +844,7 @@ with tab_water:
                          xaxis_title="Seasonal Water Requirement (mm)",
                          yaxis={"autorange":"reversed"},
                          paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(fig_wn, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 # ════════════════════════════════════════════════════════════════════════════
 # TAB 5 — ANALYSIS
@@ -874,7 +874,7 @@ with tab_analysis:
         fig_d.update_layout(title="By Category", height=300,
                             margin=dict(t=40,b=0,l=0,r=0),
                             paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_d, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with ac2:
         risk_c = df_a["Pest Risk"].value_counts()
@@ -884,7 +884,7 @@ with tab_analysis:
         fig_r.update_layout(title="By Pest Risk Level", height=300,
                             margin=dict(t=40,b=30,l=5,r=5),
                             paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_r, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Radar crop compare
     st.markdown('<div class="section-head">🕸️ Radar Comparison</div>',
@@ -910,7 +910,7 @@ with tab_analysis:
     fig_rd.update_layout(polar=dict(radialaxis=dict(visible=True,range=[0,100])),
                          height=400, paper_bgcolor="rgba(0,0,0,0)",
                          margin=dict(t=20,b=20,l=20,r=20))
-    st.plotly_chart(fig_rd, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Market price
     st.markdown('<div class="section-head">💰 Market Price (₹/kg)</div>',
@@ -925,7 +925,7 @@ with tab_analysis:
                          xaxis_title="₹ per kg",
                          yaxis={"autorange":"reversed"},
                          paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(fig_mp, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown('<div class="section-head">📋 Full Reference Table</div>',
                 unsafe_allow_html=True)
@@ -979,7 +979,7 @@ with tab_explorer:
         fig_ec.update_layout(yaxis=dict(title="% of scale",range=[0,120]),
                              height=280, margin=dict(t=5,b=5,l=5,r=5),
                              paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_ec, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         st.markdown('<div class="section-head">🦠 Disease & Pest Threats</div>',
                     unsafe_allow_html=True)
@@ -1058,7 +1058,7 @@ with tab_history:
                                     height=max(200,len(freq)*42),
                                     margin=dict(t=35,b=10,l=5,r=40),
                                     paper_bgcolor="rgba(0,0,0,0)")
-                st.plotly_chart(fig_f, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
 
             with hc2:
                 tr_df = pd.DataFrame([{
@@ -1080,7 +1080,7 @@ with tab_history:
                                      height=max(200,len(history)*18+100),
                                      margin=dict(t=35,b=30,l=5,r=5),
                                      paper_bgcolor="rgba(0,0,0,0)")
-                st.plotly_chart(fig_tr, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
 
         if st.button("🗑️ Clear History"):
             if os.path.exists(HISTORY_FILE):
