@@ -33,14 +33,7 @@ Features
 
 # Project Structure
 
-smart-crop-advisor/
-│── app.py
-│── data.py
-│── generate_and_train.py
-│── model/
-│    └── crop_model.pkl
-│── requirements.txt
-│── prediction_history.json
+smart-crop-advisor -> app.py -> data.py -> generate_and_train.py  -> model --> crop_model.pkl -> requirements.txt -> prediction_history.json
 
 # Installation & Setup
 1. Clone the repository
